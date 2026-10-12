@@ -1,0 +1,28 @@
+# Apptainer recipe matching the container used for the paper runs.
+#   apptainer build grasp.sif environment/grasp.def
+#   export GRASP_CONTAINER=$PWD/grasp.sif
+Bootstrap: docker
+From: condaforge/miniforge3:latest
+
+%files
+    environment/requirements.txt /opt/grasp/requirements.txt
+
+%environment
+    export PATH=/opt/conda/envs/grasp/bin:$PATH
+
+%post
+    apt-get update -y
+    apt-get install -y --no-install-recommends git libglib2.0-0 libgl1 libsm6 libxext6 libxrender1 libhdf5-dev \
+        rdma-core libibverbs1 ibverbs-providers librdmacm1 libnuma1 libmetis-dev
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+    export CONDA_OVERRIDE_CUDA=12.8
+    conda create -y -p /opt/conda/envs/grasp python=3.11 pip
+    /opt/conda/envs/grasp/bin/pip install --no-cache-dir torch==2.9.0 torchvision==0.24.0 \
+        --index-url https://download.pytorch.org/whl/cu128
+    /opt/conda/envs/grasp/bin/pip install --no-cache-dir -r /opt/grasp/requirements.txt
+    # optional: rebuilding the label partition from scratch (partitions/metis_label_partition.py)
+    /opt/conda/envs/grasp/bin/pip install --no-cache-dir metis==0.2a5 || true
+    conda clean --all -y
+
+%runscript
+    exec "$@"

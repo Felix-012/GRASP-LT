@@ -1,0 +1,7 @@
+outputs/
+__pycache__/
+*.pyc
+*.sif
+*.h5
+.pytest_cache/
+wandb/

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper."
+title: "GRASP: Guided Residual Adapters with Sample-wise Partitioning"
+authors:
+  - family-names: Nützel
+    given-names: Felix
+  - family-names: Dombrowski
+    given-names: Mischa
+  - family-names: Kainz
+    given-names: Bernhard
+preferred-citation:
+  type: conference-paper
+  title: "GRASP: Guided Residual Adapters with Sample-wise Partitioning"
+  authors:
+    - family-names: Nützel
+      given-names: Felix
+    - family-names: Dombrowski
+      given-names: Mischa
+    - family-names: Kainz
+      given-names: Bernhard
+  collection-title: "Advances in Neural Information Processing Systems (NeurIPS)"
+  year: 2026
