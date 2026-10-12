@@ -6,7 +6,7 @@ adapter, so that rare conditions always update their own expert. The flow-matchi
 sampler are unchanged.
 
 > Felix Nützel, Mischa Dombrowski, Bernhard Kainz. *GRASP: Guided Residual Adapters with Sample-wise
-> Partitioning.* NeurIPS 2026. [paper](TODO) · [project page](TODO)
+> Partitioning.* NeurIPS 2026. [paper](https://arxiv.org/abs/2512.01675)
 
 The run files reproduce every method on MIMIC-CXR-LT (full fine-tuning,
 MoCLE, CCUA, shared adapter, GRASP variants, learned-gate MoE-GRASP, minority guidance), the ImageNet-LT
